@@ -1,0 +1,17 @@
+@using Hangman.Models;
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h1>Your hangman</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Hangman-0.png" />
+
+    <div class="container">
+        <p>Your Guess: @Game.CurrentMatch</p>
+    </div>
+    <p><a href="/hangman/new">Make a Guess</a></p>
+</div>
+
+<p><a href="/">Go Home</a></p>

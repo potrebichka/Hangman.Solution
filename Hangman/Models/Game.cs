@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace Hangman.Models
 {
-    public class Game
+    public static class Game
     {
         public static List<string> WordList = new List<string>{"retired", "difference", 
         "warthwax", "debate", "speech"};
 
         public static int GameCount { get; set; }
 
-        public string CurrentWord { get; set; }
-        public string CurrentMatch { get; set; }
-        public bool WinningStatus { get; set; }
-        public List<char> userGuesses { get; set;}
+        public static string CurrentWord { get; set; }
+        public static string CurrentMatch { get; set; }
+        public static bool WinningStatus { get; set; }
+        public static List<char> userGuesses { get; set;}
 
-        public Game()
+        public static void StartGame()
         {
             Random rnd = new Random();
             int  randomNum = rnd.Next(0, WordList.Count);
@@ -25,12 +25,12 @@ namespace Hangman.Models
             WinningStatus = true;
             foreach(char letter in CurrentWord)
             {
-                CurrentMatch += "_";
+                CurrentMatch += "_ ";
             }
             userGuesses = new List<char>{};
         }
 
-        public string CompleteGuess(char userGuess)
+        public static string CompleteGuess(char userGuess)
         {
             if(GameCount == 6)
             {
@@ -43,7 +43,7 @@ namespace Hangman.Models
             }
         }
 
-        public string CheckLetter(char userGuess)
+        public static string CheckLetter(char userGuess)
         {
             for (int i = 0; i <userGuesses.Count; i++)
             {
@@ -67,7 +67,7 @@ namespace Hangman.Models
             return CurrentMatch;
         }
 
-        public bool CheckWord(string userGuess)
+        public static bool CheckWord(string userGuess)
         {
             if(CurrentWord == userGuess)
             {
